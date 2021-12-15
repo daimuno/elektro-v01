@@ -81,7 +81,7 @@ const Layout = ({ pageTitle, children }) => {
         {children}
       </main>
     </div>
-
+    <p> </p>
       <div className={footer}>
       <Container>
         <Row>

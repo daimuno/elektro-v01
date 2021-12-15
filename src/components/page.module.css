@@ -42,10 +42,30 @@
   .nav-link-text:hover{
     color: violet;
   }
-  /*Admission*/
+  /*home*/
+  .programkami{
+    width:100%+16px;
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-bottom: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: blueviolet;
+    font-family: 'Poppins', sans-serif;
+    color: cornsilk;
+    text-align: justify;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
   .homeinfo{
     text-align: center;
-    width: 70%;
+    width: 60%;
     margin:0px auto;
   }
   /*Admission*/
@@ -71,3 +91,8 @@
     margin-top: -50px;
   }
   /*dosen dan staff*/
+
+  /*contact Us*/
+  .detailtext{
+    color: gray;
+  }
