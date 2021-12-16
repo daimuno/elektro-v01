@@ -5,30 +5,8 @@ module.exports = {
   },
   plugins: ["gatsby-plugin-netlify-cms",
             "gatsby-plugin-image",
-            "gatsby-plugin-sharp",],
-  /*menuLinks:[
-    {
-      name:'Home',
-      link:'/',
-    },
-    {
-      name:'Fasilitas',
-      link:'/fasilitas',
-      subMenu:[
-        {
-          name:'11',
-          link:'\11',
-        },
-        {
-          name:'11',
-          link:'\11',
-        },
-        {
-          name:'11',
-          link:'\11',
-        },
-      ],
-    },
-  ],*/
+            "gatsby-plugin-sharp",
+            "react-image-gallery",
+          ],
   
 };
