@@ -1,71 +1,71 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
+import { StaticImage } from 'gatsby-plugin-image'
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
+import {CSSTransition} from "react-transition-group"
+import"./header.css"
 
-const Header = ({ siteTitle, menuLinks }) => (
-  <header
-    style={{
-      background: "rebeccapurple",
-      marginBottom: "1.45rem",
-    }}
-  >
-    <div
-      style={{
-        background: "rebeccapurple",
-        marginBottom: "1.45rem",
-      }}
-    >
-      <div
-        style={{
-          margin: "0 auto",
-          maxWidth: 960,
-          padding: "1.45rem 1.0875rem",
-          display: "flex",
-          justifyItems: "space-between",
-          alignItems: "center",
-        }}
+export default function Header(){
+  const [isNavVisible, setIsNavVisible] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavVisible(!isNavVisible);
+  }
+
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const handleMediaQueryChange = mediaQuery => {
+    if (mediaQuery.matches){
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
+    }
+  }
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width:700px)");
+    mediaQuery.addListener(handleMediaQueryChange);
+    handleMediaQueryChange(mediaQuery);
+
+    return() => {
+      mediaQuery.removeListener(handleMediaQueryChange);
+    };
+  }, []);
+  return(
+    <header classname="Header">
+      <div className="Headerbox">
+      <Link to="/" className="navLinkText">
+        <StaticImage
+          alt="UKWMS"
+          src="../images/header v3.png"
+        />
+      </Link>
+      
+      <CSSTransition
+        in={!isSmallScreen || isNavVisible}
+        timeout={350}
+        classNames="NavAnimation"
+        unmountOnExit
       >
-        <h1 style={{ margin: 0, flex: 1 }}>
-          <Link
-            to="/"
-            style={{
-              color: "white",
-              textDecoration: "none",
-            }}
-          >
-            {siteTitle}
-          </Link>
-        </h1>
-        <div>
-          <nav>
-            <ul style={{ display: "flex", flex: 1 }}>
-              {menuLinks.map(link => (
-                <li
-                  key={link.name}
-                  style={{
-                    listStyleType: `none`,
-                    padding: `1rem`,
-                  }}
-                >
-                  <Link style={{ color: `white` }} to={link.link}>
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <nav className="Nav">
+              <Link to="/" className="navLinkText">Home</Link>
+              <Link to="/fasilitas" className="navLinkText">Fasilitas</Link>
+              <Link to="/akademik" className="navLinkText">Akademik</Link>
+              <Link to="/admisi" className="navLinkText">Admisi</Link>
+              <Link to="/dosen-dan-staff" className="navLinkText">Dosen dan Staff</Link>
+              <Link to="/informasi" className="navLinkText">Informasi</Link>
+              <Link to="/publikasi" className="navLinkText">Publikasi</Link>
+              <Link to="/contact-us" className="navLinkText">Contact Us</Link>
+              <Link to="/member" className="navLinkText">Member</Link>
           </nav>
-        </div>
+        </CSSTransition>
+
+        <button onClick={toggleNav} className="Burger">
+          <StaticImage
+            alt="UKWMS"
+            src="../images/icon/menu.png"
+            height="30"
+          />
+        </button>
       </div>
-    </div>
-  </header>
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+    </header>
+  )
 }
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header

@@ -2,6 +2,7 @@ import * as React from 'react'
 import Layout from '../components/layout'
 import { StaticImage } from 'gatsby-plugin-image'
 import { Container, Row, Col } from 'react-grid-system';
+import Header from '../components/header';
 import {
   container,
   heading,

@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Smooch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap');
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+.Headerbox{
+  background-color: #0300b0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.Header{
+  display: grid;
+  grid-template-areas: "logo nav";
+}
+.Nav {
+  grid-area: nav;
+  display: grid;
+  grid-template-columns: repeat(10,auto);
+  align-items: center;
+  justify-items: center;
+}
+.navLinkText {
+  color: whitesmoke;
+  font-size: medium;
+  font-weight: 600;
+  text-decoration: none;
+}
+.NavAnimation-enter{
+  opacity:0;
+  transform: scale(0.5);
+}
+.NavAnimation-enter-active{
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 350ms, transform 350ms;
+}
+.NavAnimation-exit{
+  opacity: 1;
+}
+.NavAnimation-exit-active{
+  opacity: 0;
+  transform:scale(0.5);
+  transition: opacity 350ms, transform 350ms;
+}
+.Burger{
+  display: none;
+  background: none;
+  border: none;
+}
+@media(max-width:800px){
+  .Header{
+    grid-template-areas: "logo burger" "nav nav";
+  }
+  .Nav{
+    grid-template-rows: repeat(10,auto);
+    grid-template-columns: none;
+    grid-row-gap:20px;
+  }
+  .Burger{
+    display: block;
+  }
+}
